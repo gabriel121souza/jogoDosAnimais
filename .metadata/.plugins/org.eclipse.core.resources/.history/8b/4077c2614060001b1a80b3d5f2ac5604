@@ -1,0 +1,17 @@
+package com.gabriel.animalGame.main;
+
+public class Main {
+	public static void main(String[] args) {
+		AnimalNode<String> raiz;
+		AnimalView msg = new AnimalView();
+		msg.inicio();
+		raiz = AnimalDao.inicioArvore();
+		do {
+			AnimalController.play(raiz);
+		} while (msg.query("Vamos jogar novamente?"));
+
+		JOptionPane.showMessageDialog(null, " Game criador por Gabriel de Souza");
+		raiz.imprimir(1);
+		System.exit(0);
+	}
+}

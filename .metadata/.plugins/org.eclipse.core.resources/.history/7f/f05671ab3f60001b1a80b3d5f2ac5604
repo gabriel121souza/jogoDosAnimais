@@ -1,0 +1,81 @@
+package com.gabriel.animalGame.model;
+
+public class AnimalNode {
+
+	//criando uma classe Generica
+	public class AnimalNode<A>{
+		
+		//Atributos da nossa Arvore binaria para a logica de adivinhacao
+		private A dados;
+		private AnimalNode<A> esq;
+		private AnimalNode<A> dir;
+		
+		//construtor da classe
+		public AnimalNode(A dadosInicial, AnimalNode<A> esqInicial, AnimalNode<A> dirInicial) {
+			dados = dadosInicial;
+			esq = esqInicial;
+			dir = dirInicial;
+		}
+
+		
+		//Metodos Getters and Setters
+		
+		public A getDados() {
+			return dados;
+		}
+
+		public void setDados(A dados) {
+			this.dados = dados;
+		}
+
+		public AnimalNode<A> getEsq() {
+			return esq;
+		}
+
+		public void setEsq(AnimalNode<A> esq) {
+			this.esq = esq;
+		}
+
+		public AnimalNode<A> getDir() {
+			return dir;
+		}
+
+		public void setDir(AnimalNode<A> dir) {
+			this.dir = dir;
+		}
+		
+		//metodos para a validacao da arvore binaria
+		
+		public boolean isFolha() {
+			return (esq==null) && (dir==null);
+		}
+		
+		public void imprimir(int profundidade) {
+			int i;
+			for(i=1; i<=profundidade; i++) {
+				System.out.println(" ");
+				System.out.println(dados);
+				
+				if(esq != null) {
+					esq.imprimir(profundidade+1);
+				}else if(dir != null) {
+					for(i=1; i<= profundidade; i++) {
+						System.out.println(" ");
+						System.out.println("--");
+					}
+					if(dir !=null) {
+						dir.imprimir(profundidade + 1);
+					}
+					else if(esq!=null) {
+						for(i=1; i<=profundidade+1; i++) {
+							System.out.println(" ");
+							System.out.println("--");
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+}
